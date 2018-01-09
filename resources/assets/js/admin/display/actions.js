@@ -21,11 +21,10 @@ Admin.Modules.register('display.actions', () => {
             Admin.Events.fire("datatables::actions::submitting", settings);
 
             $.ajax(settings).done(function (msg) {
-                let rd = msg;
                 if (msg.hasOwnProperty('text')) {
-                    swal({title: msg.text, text: msg.message, type: msg.type, timer: 5000}).then((value, rd) => {
-                      if (rd.hasOwnProperty('redirect')){
-                        window.location = rd.redirect;
+                    swal({title: msg.text, text: msg.message, type: msg.type, timer: 5000}).then((value) => {
+                      if (msg.hasOwnProperty('redirect')){
+                        window.location = msg.redirect;
                       }
                     })
                 }
