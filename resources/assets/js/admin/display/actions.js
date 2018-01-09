@@ -22,10 +22,8 @@ Admin.Modules.register('display.actions', () => {
 
             $.ajax(settings).done(function (msg) {
                 if (msg.hasOwnProperty('text')) {
-                    swal({title: msg.text, text: msg.message, type: msg.type, timer: 5000}).then((value, msg) => {
-                      if (msg.hasOwnProperty('redirect')){
-                        window.location = msg.redirect;
-                      }
+                    swal({title: msg.text, text: msg.message, type: msg.type, timer: 5000}).then(() => {
+                      window.location.href = '/'
                     })
                 }
             });
